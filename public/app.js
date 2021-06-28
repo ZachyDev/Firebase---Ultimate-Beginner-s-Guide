@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', event => {
 
     const db = firebase.firestore();
 
-    const user = db.collection('students').doc('personal_info').get()
-        .then(doc => {
-            const userInfo = doc.data();
+    const user = db.collection('students').doc('personal_info')
+        .onSnapshot(doc => {
+            const data = doc.data();
 
-            document.write(`${userInfo.firstname} ${userInfo.time}`);
-            
+            document.write(`${ data.firstname }
+                ${ data.time }
+            `);
         })
 });
 
