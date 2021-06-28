@@ -1,7 +1,17 @@
 document.addEventListener('DOMContentLoaded', event => {
-    const app = firebase.initializeApp();
+    const app = firebase.app();
 
-    console.log(app);
+    // console.log(app);
+
+    const db = firebase.firestore();
+
+    const user = db.collection('students').doc('personal_info').get()
+        .then(doc => {
+            const userInfo = doc.data();
+
+            document.write(`${userInfo.firstname} ${userInfo.time}`);
+            
+        })
 });
 
 const googleLogin = () => {
