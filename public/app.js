@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', event => {
     const app = firebase.app();
 
-    // console.log(app);
+    console.log(app);
 
     const db = firebase.firestore();
 
     const user = db.collection('students').doc('personal_info')
         .onSnapshot(doc => {
-            const data = doc.data();
+            const data = doc.data()
 
             document.write(`${ data.firstname }
                 ${ data.time }
